@@ -18,7 +18,7 @@ body {
   overflow: hidden;
   width: 210mm;
   height: 297mm;
-  width: 200mm;
+  width: 190mm;
   height: 267mm;
   padding: 1cm;
 }
@@ -42,8 +42,8 @@ header p {
 }
 
 /* Story steps */
-.story-step {
-  margin-bottom: 2rem;
+article {
+  margin-bottom: 1rem;
   position: relative;
   padding-bottom: 1rem;
   break-inside: avoid;
@@ -51,7 +51,7 @@ header p {
 }
 
 /* Divider between steps */
-.story-step:not(:first-child)::before {
+article:not(:first-child)::before {
   content: "";
   display: block;
   margin: 1.5rem auto 0;
@@ -64,11 +64,11 @@ header p {
   display: block;
   font-size: 2rem;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 p {
-	padding: 1em 0;
+	padding: 0.5em 0;
 }
 
 /* Choices (links) */
@@ -87,18 +87,17 @@ p {
   font-weight: bold;
 }
 
-/* Footer with page numbers */
 footer {
   position: absolute;
   bottom: 1em;
   left: 45%;
   padding: 0 1em 0.2em;
   font-size: 1.3rem;
-  color: #999;
-  background-color: yellow;
+  background-color: #ccf;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
-/* Page outlines on screen */
 @media screen {
   body {
     background: #fdfdfd;
@@ -113,7 +112,6 @@ footer {
   }
 }
 
-/* Print styles */
 @media print {
   .page {
     page-break-after: always;
