@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		  <meta charset="UTF-8">
+		    <title>Home Adventure</title>
+		      <style>
+    body {
+	          font-family: sans-serif;
+		        background-color: #121212;
+			      color: #f5f5f5;
+			            padding: 20px;
+				          max-width: 600px;
+					        margin: auto;
+						    }
+        .option-button {
+		      background: #333;
+		            color: #fff;
+			          border: none;
+				        padding: 10px 20px;
+					      margin: 10px 0;
+					            border-radius: 5px;
+						          cursor: pointer;
+							        display: block;
+								    }
+	    .option-button:hover {
+		          background: #555;
+			      }
+	      </style>
+	</head>
+	<body>
+
+		  <h1>Your Adventure Begins</h1>
+		    <div id="story"></div>
+		      <div id="options"></div>
+
+		        <script>
+				    const adventure = {
+					          start: {
+							          text: "You are at home and you hear something.",
+							          options: [
+									            { text: "Investigate", next: "investigate" },
+									            { text: "Tell your uncle", next: "tellUncle" }
+									          ]
+							        },
+					          investigate: {
+							          text: "You slowly walk toward the sound… and suddenly you see something white go from one side of the room to the other.",
+							          options: [
+									            { text: "Look for it", next: "lookForIt" },
+									            { text: "Tell your uncle", next: "tellUncle" }
+									          ]
+							        },
+					          tellUncle: {
+							          text: "You run to your uncle and tell him. He grabs a flashlight and says, 'Let’s set a mouse-trap-cage just in case.'",
+							          options: [
+									            { text: "Help him set the trap", next: "setTrap" },
+									            { text: "Stay in your room", next: "deadEnd" }
+									          ]
+							        },
+					          setTrap: {
+							          text: "You help your uncle set up the mouse-trap-cage with a bit of cheese. Later, you hear it snap shut!",
+							          options: [
+									            { text: "Check the trap", next: "foundMouse" },
+									            { text: "Stay in your room", next: "deadEnd" }
+									          ]
+							        },
+					          lookForIt: {
+							          text: "You carefully look around… but there's nothing there. The room feels cold.",
+							          options: [
+									            { text: "Check under the table", next: "foundMouse" },
+									            { text: "Open the closet", next: "deadEnd" }
+									          ]
+							        },
+					          foundMouse: {
+							          text: "You find a tiny white mouse! It squeaks and looks up at you with shiny eyes.",
+							          options: [
+									            { text: "Keep it as a pet", next: "teleport" },
+									            { text: "Let it go outside", next: "letGo" }
+									          ]
+							        },
+					          teleport: {
+							          text: "The mouse glows bright white and suddenly — WHOOSH! You're teleported to a strange room filled with floating objects. The mouse looks around and says, 'I don't think we are at home anymore.'",
+							          options: [
+									            { text: "Explore the room", next: "exploreRoom" },
+									            { text: "Look for a way out", next: "findExit" }
+									          ]
+							        },
+					          exploreRoom: {
+							          text: "You find ancient books and floating candles. A whisper says, 'Welcome, mouse-friend.' The adventure continues… (To be continued!)",
+							          options: []
+							        },
+					          findExit: {
+							          text: "You find a shimmering portal. Without thinking, you step through — and suddenly, WHOOSH! You're back in your room. But… something's off. The room looks exactly the same, but everything is flipped like a mirror. The mouse says, 'I don't like the look of this…'",
+							          options: [
+									            { text: "Explore the mirror-flipped room", next: "mirrorRoom" },
+									            { text: "Look for a way out", next: "findExitRoom" }
+									          ]
+							        },
+					          mirrorRoom: {
+							          text: "You cautiously look around. The mirror-flipped room feels wrong, like you're walking in someone else's space. Even the books on the shelf are swapped. The mouse squeaks nervously, 'I don't know if I trust this.'",
+							          options: [
+									            { text: "Check the mirror", next: "mirrorCheck" },
+									            { text: "Go to the window", next: "deadEnd" }
+									          ]
+							        },
+					          mirrorCheck: {
+							          text: "You approach the mirror on the wall. It's just your reflection… but it seems to be watching you. Suddenly, the reflection starts to move on its own, as if it's alive. The mouse scurries into your hand, frightened.",
+							          options: []
+							        },
+					          findExitRoom: {
+							          text: "You try to find a way out, but the walls seem to close in. Everything feels wrong. It’s like you can never leave. The end.",
+							          options: []
+							        },
+					          letGo: {
+							          text: "You carefully let the mouse outside where it scurries into the grass. The end.",
+							          options: []
+							        },
+					          deadEnd: {
+							          text: "Nothing else happens. The story ends here.",
+							          options: []
+							        }
+					        };
+
+				        function showScene(sceneKey) {
+						      const scene = adventure[sceneKey];
+						      const storyDiv = document.getElementById("story");
+						      const optionsDiv = document.getElementById("options");
+
+						      storyDiv.textContent = scene.text;
+						      optionsDiv.innerHTML = "";
+
+						      scene.options.forEach(option => {
+							              const button = document.createElement("button");
+							              button.textContent = option.text;
+							              button.className = "option-button";
+							              button.onclick = () => showScene(option.next);
+							              optionsDiv.appendChild(button);
+							            });
+						    }
+
+				        showScene("start");
+				      </script>
+
+	</body>
+</html>
+
