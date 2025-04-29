@@ -9,24 +9,18 @@ body {
   font-family: 'Georgia', serif;
   font-size: 1.1rem;
   line-height: 1.5;
-  padding: 2rem;
-  max-width: 800px;
   margin: auto;
 }
 
 /* Pages */
 .page {
-  width: 210mm;
-  height: 297mm;
-  padding: 2cm;
-  margin: 1cm auto;
-  background: white;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
   position: relative;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  width: 210mm;
+  height: 297mm;
+  width: 200mm;
+  height: 267mm;
+  padding: 1cm;
 }
 
 /* Title page */
@@ -73,6 +67,10 @@ header p {
   margin-bottom: 1rem;
 }
 
+p {
+	padding: 1em 0;
+}
+
 /* Choices (links) */
 .choices {
   margin-top: 1rem;
@@ -92,8 +90,8 @@ header p {
 /* Footer with page numbers */
 footer {
   position: absolute;
-  bottom: 1rem;
-  left: 50%;
+  bottom: 1em;
+  left: 45%;
   padding: 0 1em 0.2em;
   font-size: 1.3rem;
   color: #999;
@@ -103,28 +101,26 @@ footer {
 /* Page outlines on screen */
 @media screen {
   body {
-    border: 1px dashed #ccc;
-    padding: 3rem;
     background: #fdfdfd;
     color: #222;
+  }
+
+  .page {
+    margin: 1cm auto;
+    background: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    outline: 1px dashed #ccc;
   }
 }
 
 /* Print styles */
 @media print {
-  body {
-    background: white;
-  }
-
   .page {
-    box-shadow: none;
-    margin: 0;
     page-break-after: always;
   }
 
   @page {
     size: A4;
-    margin: 2cm;
   }
 }
 
