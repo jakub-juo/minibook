@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
 	unfoldPages ()
 	numberPages ()
-	amendLinks ()
+	amendJumps ()
 })
 
 function unfoldPages () {
@@ -39,15 +39,18 @@ function splitPageContent (p) {
 	}
 }
 
-function amendLinks () {
+function amendJumps () {
 	let links = Array.from (document.querySelectorAll ('a[href]'))
-	links.map (amendLink)
+	links.map (amendJump)
 }
 
-function amendLink (a) {
-	let num = findTargetElementFromLinkWithURL (a)?.parentElement.getAttribute ('page-num')
-	if (num) {
-		a.innerHTML += ' on page ' + num
+function amendJump (a) {
+	const art = findTargetElementFromLinkWithURL (a)
+	const aa = a . querySelector ('.a')
+	if (art && aa) {
+		const num = art . parentElement . getAttribute ('page-num')
+		const mark = art . querySelector ('.step-marker') ?. innerHTML || ''
+		aa.innerHTML = (num ? ' page ' + num : '') + (mark ? ' ' + mark : '')
 	}
 }
 

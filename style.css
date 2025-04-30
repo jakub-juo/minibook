@@ -72,19 +72,27 @@ p {
 }
 
 /* Choices (links) */
-.choices {
+ul {
   margin-top: 1rem;
   list-style: none;
 }
 
-.choices li {
+ul > li {
   margin-top: 0.5rem;
 }
 
-.choices li, .choices a {
+ul > li, a {
   text-decoration: none;
   color: #0055aa;
   font-weight: bold;
+}
+
+math {
+	font-weight: bold;
+	color: #004;
+	font-size: 1.2em;
+	padding: 0.3em 1em;
+	background-color: #eee;
 }
 
 footer {
